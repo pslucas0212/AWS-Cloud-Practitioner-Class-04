@@ -53,6 +53,18 @@ Thanks for listening. I'm gonna sit here and keep ordering coffees from my magic
 
 ### Subnets and Network Access Control Lists
 
+IGW covers the perimeter of your VPC and is only one part of your security... There's much more to securing your environment.
+
+Network Hardening
+- Use subnets to control access to gateways and traffic permsissions.
+- Network access control lists (ACL) controls if packets can enter and leave a subnet.  Like a passport control officer. List gets checked on the way in and the way out.  Only evaluated if it crosses a subnet boundry.  By default Network ACLs allow all inbound and outbound traffic.
+- Instance level access is controlled by security groups.  By default all traffic is blocked.  Modify security group to allow particular type of traffic.  Allow HTTP/HTTPS traffic.  With security groups allow packets out automatically if allowed in
+- Secruity Group is stateful - remembers who allow in and out
+- Network ACL is stateless.  It doesn't remember anything and checks every packet.
+- All exchanges between subnets happens very quickly
+- Good network security uses both security groups and network ACLs
+
+
 
 
 #### Transcript
