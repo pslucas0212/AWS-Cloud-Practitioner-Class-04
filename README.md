@@ -91,3 +91,40 @@ Once the transaction's complete, now it's just time to come home. It's the retur
 The packet pass the network ACL, the subnet level, which means the packets now made it back to instance A but the security group, the doorman is still in charge here. The key difference though is these security groups are stateful. The security group recognizes the packet from before. So it doesn't need to check to see if it's allowed in. Come on home. 
 
 Now, this may seem like we spent a lot of effort just getting a packet from one instance to another and back. You might be concerned about all the network overhead this might generate. The reality is all of these exchanges happen instantly as part of how AWS Networking actually works. If you wanna know the technology that makes all that possible, well, then you need to sign up for a completely different set of trainings. Good network security will take advantage of both network ACLs and security groups, because security in-depth is critical for modern architectures.
+
+### Global Networking
+
+Amazon Route 53 is Amazon's DNS service.  DNS can direct requests based on different routing policies.
+- latency based
+- Geolocation DNS
+- etc.
+
+Register and manage domain names on DNS
+
+Amazon CloudFront - Edge locations and CDN.  Delivers edge content base customer location.
+
+#### Transcript
+We've been talking a lot about how you interact with your AWS infrastructure. But how do your customers interact with your AWS infrastructure? Well, if you have a website hosted at AWS, then customers usually enter your website into their browser, hit Enter, some magic happens, and the site opens up. 
+
+But how does this magic work? Well, just like this magic coin that I have here, you know, you take a bite, and it's, it's back. Well, not quite like that, but I'm going to take you through two services, which would help in the website case. The first one being Route 53. Route 53 is AWS's domain name service, or DNS, and it's highly available and scalable. But wait, what is DNS, you say? Think of DNS as a translation service. But instead of translating between languages, it translates website names into IP, or Internet Protocol, addresses that computers can read. 
+
+For example, when we enter a website address into our browser, it contacts Route 53 to obtain the IP address of the site, say, 192.1.1.1, then it routes your computer or browser to that address. If we go further, Route 53 can direct traffic to different endpoints using several different routing policies, such as latency-based routing, geolocation DNS, geoproximity, and weighted round robin. If we take geolocation DNS, that means we direct traffic based on where the customer is located. So traffic coming from say North America is routed to the Oregon Region, and traffic in Ireland is routed to the Dublin Region, as an example. 
+
+You can even use Route 53 to register domain names, so you can buy and manage your own domain names right on AWS. 
+
+Speaking of websites, there is another service which can help speed up delivery of website assets to customers, Amazon CloudFront. If you remember, we talked about Edge locations earlier in the course, these locations are serving content as close to customers as possible, and one part of that, is the content delivery network, or CDN. For those who need reminding, a CDN is a network that helps to deliver edge content to users based on their geographic location. 
+If we go back to our North America versus Ireland example, say we have a user in Seattle, and they want to access a website, to speed this up, we host the site in Oregon, and we deploy our static web assets, like images and GIFs in CloudFront in North America. This means they get content delivered as close to them as possible, North America in this case, when they access the site. But for our Irish users, it doesn't make sense to deliver those assets out of Oregon, as the latency is not favorable. Thus we deploy those same static assets in CloudFront, but this time in the Dublin Region. That means they can access the same content, but from a location closer to them, which in turn improves latency. 
+
+I hope you're content after learning about these two services. Thanks for following along, and I'm going to disappear just like this red cloth. Tada!
+
+### Module Summary
+
+#### Transcript
+Networking used to be the exclusive domain of topological geniuses. With AWS, networking is now simplified and abstracted to answer the simple question of who should be allowed to communicate with each other. As long as you can answer that question, then you can set up your network on AWS. 
+
+We covered the basics of VPC, the virtual private cloud, the way that you isolate your workload in AWS, the fundamentals of network security, including gateways, network ACLs, and security groups, all methods that allow your security engineers to craft a network that allows healthy traffic access while dropping subversive attacks before they reach your instance, ways to connect to AWS through VPN and even Direct Connect, secure pipelines that are either encrypted over the general internet or exclusive fiber used by you and you alone. 
+
+We also talked about the global networks that AWS provides using our Edge locations, how you can use Route 53 for DNS, and how to use CloudFront to cache content closer to your actual consumers. 
+
+So while this only scratches the surface of the many things you can do with AWS networking, we hope that it gives you an understanding of the key moving pieces you need to get your business started.
+
